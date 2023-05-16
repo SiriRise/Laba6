@@ -3,20 +3,18 @@
 # 1 часть – написать программу в соответствии со своим вариантом задания.
 
 word = "институт"
-lexems = set()
-def generate_lexems(word, lexems, prefix="", length=1):
-    if length > 1 and prefix not in lexems:
-        lexems.add(prefix)
-    if length == len(word):
-        if word not in lexems:
-            lexems.add(word)
-        return
-    for i in range(len(word)):
-        char = word[i]
-        generate_lexems(word[:i] + word[i + 1:], lexems, prefix + char, length + 1)
+def find_permutations(string):
+    if not string:
+        yield string
+    else:
+        used_characters = set()
+        for i, ch in enumerate(string):
+            if ch not in used_characters:
+                used_characters.add(ch)
+                remaining_characters = string[:i] + string[i + 1:]
+                for permutation in find_permutations(remaining_characters):
+                    yield ch + permutation
 
-
-generate_lexems(word, lexems)
-print(f"Лексемы в слове '{word}':")
-for i, lexem in enumerate(sorted(lexems), 1):
-    print(f"{i}. {lexem}")
+permutations = list(find_permutations(word))
+for i, permutation in enumerate(set(permutations)):
+    print(f"{i + 1}: {permutation}")
