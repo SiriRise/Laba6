@@ -13,8 +13,7 @@ def generate_lexems(word, lexems, prefix="", length=1):
         return
     for i in range(len(word)):
         char = word[i]
-        if i == 0 or word[i] != word[i-1]:
-            generate_lexems(word[:i] + word[i + 1:], lexems, prefix + char, length + 1)
+        generate_lexems(word[:i] + word[i + 1:], lexems, prefix + char, length + 1)
 
 
 generate_lexems(word, lexems)
