@@ -11,6 +11,7 @@ def generate_lexems_no_cogl(word, lexems, prefix="", length=1, prev_vowel=False,
         if word not in lexems:
             lexems.add(word)
         return
+
     for i, char in enumerate(word):
         is_vowel = char in "бвгджзйклмнпрстфхцчшщ"
         has_double_vowels = is_vowel and prev_vowel
