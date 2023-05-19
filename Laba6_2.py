@@ -7,7 +7,6 @@
 
 word = "институт"
 vowels = set("аеиоуыэюя")
-usedscharacters = set()
 def find_permutations(string, prev=None):
     if not string:
         yield string
