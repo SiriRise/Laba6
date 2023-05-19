@@ -9,11 +9,10 @@ def find_permutations(string):
     else:
         used_characters = set()
         for i, ch in enumerate(string):
-            if ch not in used_characters:
-                used_characters.add(ch)
-                remaining_characters = string[:i] + string[i + 1:]
-                for permutation in find_permutations(remaining_characters):
-                    yield ch + permutation
+            used_characters.add(ch)
+            remaining_characters = string[:i] + string[i + 1:]
+            for permutation in find_permutations(remaining_characters):
+                yield ch + permutation
 
 permutations = list(find_permutations(word))
 for i, permutation in enumerate(set(permutations)):
